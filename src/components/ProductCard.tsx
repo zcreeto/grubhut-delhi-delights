@@ -1,0 +1,106 @@
+import { Product } from '@/types/product';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ShoppingCart, Flame } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+
+// Image imports
+import dosaImg from '@/assets/dosa.jpg';
+import idliImg from '@/assets/idli.jpg';
+import hyderabadiBiryaniImg from '@/assets/hyderabadi-biryani.jpg';
+import meduVadaImg from '@/assets/medu-vada.jpg';
+import uttapamImg from '@/assets/uttapam.jpg';
+import fishMoleeImg from '@/assets/fish-molee.jpg';
+import chettinadChickenImg from '@/assets/chettinad-chicken.jpg';
+import payasamImg from '@/assets/payasam.jpg';
+import kolkataBiryaniImg from '@/assets/kolkata-biryani.jpg';
+import appamImg from '@/assets/appam.jpg';
+import puttuImg from '@/assets/puttu.jpg';
+import upmaImg from '@/assets/upma.jpg';
+import chicken65Img from '@/assets/chicken-65.jpg';
+import parottaImg from '@/assets/parotta.jpg';
+import lemonRiceImg from '@/assets/lemon-rice.jpg';
+import bisiBeleBathImg from '@/assets/bisi-bele-bath.jpg';
+
+const imageMap: Record<string, string> = {
+  dosa: dosaImg,
+  idli: idliImg,
+  'hyderabadi-biryani': hyderabadiBiryaniImg,
+  'medu-vada': meduVadaImg,
+  uttapam: uttapamImg,
+  'fish-molee': fishMoleeImg,
+  'chettinad-chicken': chettinadChickenImg,
+  payasam: payasamImg,
+  'kolkata-biryani': kolkataBiryaniImg,
+  appam: appamImg,
+  puttu: puttuImg,
+  upma: upmaImg,
+  'chicken-65': chicken65Img,
+  parotta: parottaImg,
+  'lemon-rice': lemonRiceImg,
+  'bisi-bele-bath': bisiBeleBathImg,
+};
+
+interface ProductCardProps {
+  product: Product;
+}
+
+export const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const imageSrc = imageMap[product.image] || dosaImg;
+
+  const getSpiceLevelColor = (level?: string) => {
+    switch (level) {
+      case 'hot':
+        return 'destructive';
+      case 'medium':
+        return 'default';
+      case 'mild':
+        return 'secondary';
+      default:
+        return 'outline';
+    }
+  };
+
+  return (
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-soft animate-fade-in">
+      <div className="relative overflow-hidden h-48">
+        <img
+          src={imageSrc}
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute top-2 right-2 flex gap-2">
+          {product.isVeg && (
+            <Badge variant="secondary" className="bg-secondary/90">
+              Veg
+            </Badge>
+          )}
+          {product.spiceLevel && (
+            <Badge variant={getSpiceLevelColor(product.spiceLevel)} className="flex items-center gap-1">
+              <Flame className="w-3 h-3" />
+              {product.spiceLevel}
+            </Badge>
+          )}
+        </div>
+      </div>
+      <CardContent className="p-4">
+        <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{product.description}</p>
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-bold text-primary">₹{product.price}</span>
+        </div>
+      </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <Button
+          onClick={() => addToCart(product)}
+          className="w-full bg-primary hover:bg-primary/90"
+        >
+          <ShoppingCart className="w-4 h-4 mr-2" />
+          Add to Cart
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
