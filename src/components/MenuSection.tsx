@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import { ProductCard } from './ProductCard';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface MenuSectionProps {
   title: string;
@@ -17,6 +18,16 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [filterVeg, setFilterVeg] = useState(false);
   const [filterSpice, setFilterSpice] = useState<string | null>(null);
+  const { ref, isVisible } = useScrollAnimation();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const categories = Array.from(new Set(products.map(p => p.category)));
   const spiceLevels = ['mild', 'medium', 'hot'];
@@ -30,9 +41,14 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
   });
 
   return (
-    <section id={id} className="py-20 bg-gradient-spice">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 animate-fade-in">
+    <section 
+      id={id} 
+      className="py-20 bg-gradient-spice parallax-section"
+      style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+    >
+      <div className="container mx-auto px-4" ref={ref}>
+        <div className={`transition-all duration-700 ${isVisible ? 'fade-in-scroll' : 'opacity-0'}`}>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           {title}
         </h2>
         <div className="w-24 h-1 bg-gradient-warm mx-auto mb-12" />
@@ -107,6 +123,7 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
             <p className="text-muted-foreground text-lg">No dishes found matching your filters.</p>
           </div>
         )}
+        </div>
       </div>
     </section>
   );

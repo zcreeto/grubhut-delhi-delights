@@ -95,3 +95,32 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Parallax and scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-scroll {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.parallax-section {
+  transition: transform 0.1s ease-out;
+}
+
+/* Text shadow for hero */
+.text-shadow {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}

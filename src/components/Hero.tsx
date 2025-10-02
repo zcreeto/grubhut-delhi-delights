@@ -20,13 +20,13 @@ export const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in-up">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-          Authentic South Indian
+          Zaika Gharana
           <span className="block bg-gradient-warm bg-clip-text text-transparent mt-2">
-            Delivered to Your Doorstep
+            Delivered to Gurugram
           </span>
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-          Experience the rich flavors of South India in Gurugram. Specializing in Hyderabadi & Kolkata Biryani.
+          Experience the rich flavors of South India. Specializing in Hyderabadi & Kolkata Biryani.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#menu">

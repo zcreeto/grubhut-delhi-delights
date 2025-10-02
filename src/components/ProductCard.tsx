@@ -22,9 +22,22 @@ import chicken65Img from '@/assets/chicken-65.jpg';
 import parottaImg from '@/assets/parotta.jpg';
 import lemonRiceImg from '@/assets/lemon-rice.jpg';
 import bisiBeleBathImg from '@/assets/bisi-bele-bath.jpg';
+import masalaDosaImg from '@/assets/masala-dosa.jpg';
+import sambarImg from '@/assets/sambar.jpg';
+import rasamImg from '@/assets/rasam.jpg';
+import avialImg from '@/assets/avial.jpg';
+import pongalImg from '@/assets/pongal.jpg';
+import prawnCurryImg from '@/assets/prawn-curry.jpg';
+import koriGassiImg from '@/assets/kori-gassi.jpg';
+import meenPollichathuImg from '@/assets/meen-pollichathu.jpg';
+import sundalImg from '@/assets/sundal.jpg';
+import tamarindRiceImg from '@/assets/tamarind-rice.jpg';
+import mysorePakImg from '@/assets/mysore-pak.jpg';
+import kozhukattaImg from '@/assets/kozhukatta.jpg';
 
 const imageMap: Record<string, string> = {
   dosa: dosaImg,
+  'masala-dosa': masalaDosaImg,
   idli: idliImg,
   'hyderabadi-biryani': hyderabadiBiryaniImg,
   'medu-vada': meduVadaImg,
@@ -40,6 +53,17 @@ const imageMap: Record<string, string> = {
   parotta: parottaImg,
   'lemon-rice': lemonRiceImg,
   'bisi-bele-bath': bisiBeleBathImg,
+  sambar: sambarImg,
+  rasam: rasamImg,
+  avial: avialImg,
+  pongal: pongalImg,
+  'prawn-curry': prawnCurryImg,
+  'kori-gassi': koriGassiImg,
+  'meen-pollichathu': meenPollichathuImg,
+  sundal: sundalImg,
+  'tamarind-rice': tamarindRiceImg,
+  'mysore-pak': mysorePakImg,
+  kozhukatta: kozhukattaImg,
 };
 
 interface ProductCardProps {
@@ -64,7 +88,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-soft animate-fade-in">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-soft animate-fade-in flex flex-col h-full">
       <div className="relative overflow-hidden h-48">
         <img
           src={imageSrc}
@@ -85,9 +109,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           )}
         </div>
       </div>
-      <CardContent className="p-4">
+      <CardContent className="p-4 flex-1 flex flex-col">
         <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{product.description}</p>
+        <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-1">{product.description}</p>
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-primary">₹{product.price}</span>
         </div>
