@@ -3,7 +3,7 @@ import { Hero } from '@/components/Hero';
 import { MenuSection } from '@/components/MenuSection';
 import { products } from '@/data/products';
 import { Button } from '@/components/ui/button';
-import { MapPin, Clock, Phone } from 'lucide-react';
+import { MapPin, Clock, Phone, Mail, MessageCircle } from 'lucide-react';
 
 const Index = () => {
   const biryaniProducts = products.filter(p => p.category === 'biryani');
@@ -89,15 +89,39 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-2xl font-bold mb-4">Spice Route</h3>
-          <p className="text-background/80 mb-4">
-            Authentic South Indian Cuisine • Gurugram
-          </p>
-          <p className="text-sm text-background/60">
-            © 2025 Spice Route. All rights reserved.
-          </p>
+      <footer className="bg-foreground text-background py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl font-bold mb-4">Zaika Gharana</h3>
+            <p className="text-background/80 mb-6">
+              Authentic South Indian Cuisine • Gurugram
+            </p>
+            
+            {/* Contact Links */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <a
+                href="https://wa.me/917892479342"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-background/90 hover:text-background transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp: +91 78924 79342</span>
+              </a>
+              <span className="hidden sm:inline text-background/40">|</span>
+              <a
+                href="mailto:zcreeto+zaika_gharana@gmail.com"
+                className="flex items-center gap-2 text-background/90 hover:text-background transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                <span>zcreeto+zaika_gharana@gmail.com</span>
+              </a>
+            </div>
+            
+            <p className="text-sm text-background/60">
+              © 2025 Zaika Gharana. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
