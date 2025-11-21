@@ -103,7 +103,7 @@ const Index = () => {
                 href="https://wa.me/917892479342"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-background/90 hover:text-background transition-colors"
+                className="flex items-center gap-2 text-background hover:text-background/80 transition-colors underline decoration-background/40 hover:decoration-background cursor-pointer"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>WhatsApp: +91 78924 79342</span>
@@ -111,7 +111,7 @@ const Index = () => {
               <span className="hidden sm:inline text-background/40">|</span>
               <a
                 href="mailto:zcreeto+zaika_gharana@gmail.com"
-                className="flex items-center gap-2 text-background/90 hover:text-background transition-colors"
+                className="flex items-center gap-2 text-background hover:text-background/80 transition-colors underline decoration-background/40 hover:decoration-background cursor-pointer"
               >
                 <Mail className="w-5 h-5" />
                 <span>zcreeto+zaika_gharana@gmail.com</span>
