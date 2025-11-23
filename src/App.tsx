@@ -1,4 +1,15 @@
+import SpeedInsightsClient from "@/components/SpeedInsightsClient";
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <SpeedInsightsClient />
+        {children}
+      </body>
+    </html>
+  );
+}
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
