@@ -4,51 +4,45 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-/**
- * Initialize Vercel Speed Insights and Vercel Analytics.
- * - Run only in the browser (client-only).
- * - Use dynamic import() so bundlers don't include these in SSR/server code.
- * - Fail silently if blocked (adblockers, CSP, network).
- */
+const log = (...args: any[]) => {
+  try { console.info("[VERCEL-INSTRUMENT]", ...args); } catch {}
+};
 
-// ---------- Speed Insights (client-only) ----------
+// Speed Insights
 if (typeof window !== "undefined") {
   import("@vercel/speed-insights")
     .then(({ injectSpeedInsights }) => {
       try {
         injectSpeedInsights();
-        // console.debug("Speed Insights injected");
+        log("Speed Insights: injectSpeedInsights() called");
       } catch (e) {
-        console.debug("injectSpeedInsights() failed:", e);
+        console.error("Speed Insights: injectSpeedInsights() error:", e);
       }
     })
     .catch((err) => {
-      console.debug("Failed to import @vercel/speed-insights:", err);
+      console.error("Speed Insights import failed:", err);
     });
 }
-// ---------------------------------------------------
 
-// ---------- Vercel Web Analytics (client-only) ----
+// Analytics
 if (typeof window !== "undefined") {
   import("@vercel/analytics")
     .then(({ inject }) => {
       try {
         inject();
-        // console.debug("Vercel Analytics injected");
+        log("Analytics: inject() called");
       } catch (e) {
-        console.debug("Vercel analytics inject() failed:", e);
+        console.error("Analytics: inject() error:", e);
       }
     })
     .catch((err) => {
-      console.debug("Failed to import @vercel/analytics:", err);
+      console.error("Analytics import failed:", err);
     });
 }
-// ---------------------------------------------------
 
-const rootEl = document.getElementById("root");
-if (!rootEl) throw new Error("Root element with id='root' not found in index.html");
-
-createRoot(rootEl).render(
+const root = document.getElementById("root");
+if (!root) throw new Error("#root not found");
+createRoot(root).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
