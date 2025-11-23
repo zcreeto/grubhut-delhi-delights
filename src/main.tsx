@@ -6,9 +6,9 @@ import "./index.css";
 
 /**
  * Initialize Vercel Speed Insights and Vercel Analytics.
- * - Both must run only in the browser (client-only).
+ * - Run only in the browser (client-only).
  * - Use dynamic import() so bundlers don't include these in SSR/server code.
- * - Fail silently if blocked (adblockers, network).
+ * - Fail silently if blocked (adblockers, CSP, network).
  */
 
 // ---------- Speed Insights (client-only) ----------
@@ -23,7 +23,6 @@ if (typeof window !== "undefined") {
       }
     })
     .catch((err) => {
-      // Common: blocked by adblocker or package not installed
       console.debug("Failed to import @vercel/speed-insights:", err);
     });
 }
@@ -47,9 +46,7 @@ if (typeof window !== "undefined") {
 // ---------------------------------------------------
 
 const rootEl = document.getElementById("root");
-if (!rootEl) {
-  throw new Error("Root element with id='root' not found in index.html");
-}
+if (!rootEl) throw new Error("Root element with id='root' not found in index.html");
 
 createRoot(rootEl).render(
   <React.StrictMode>
