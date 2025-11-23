@@ -1,3 +1,20 @@
+import type { AppProps } from "next/app";
+import { useEffect } from "react";
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // call dynamically so bundlers don't include it in server build
+    import("@vercel/speed-insights").then(({ injectSpeedInsights }) => {
+      injectSpeedInsights();
+    }).catch((err) => {
+      // optional: handle silently
+      console.debug("Speed Insights not injected:", err);
+    });
+  }, []);
+
+  return <Component {...pageProps} />;
+}
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
