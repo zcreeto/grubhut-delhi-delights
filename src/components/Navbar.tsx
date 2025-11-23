@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Menu, X } from 'lucide-react';
+import { ShoppingCart, Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 import { cn } from '@/lib/utils';
@@ -31,6 +31,12 @@ export const Navbar = () => {
             <a href="#about" className="text-foreground hover:text-primary transition-colors">
               About
             </a>
+            <Link to="/auth">
+              <Button variant="ghost" size="sm">
+                <User className="w-4 h-4 mr-2" />
+                Account
+              </Button>
+            </Link>
             <Link to="/cart">
               <Button variant="outline" size="sm" className="relative">
                 <ShoppingCart className="w-4 h-4 mr-2" />
@@ -83,6 +89,12 @@ export const Navbar = () => {
             >
               About
             </a>
+            <Link to="/auth" onClick={() => setIsOpen(false)}>
+              <Button variant="ghost" size="sm" className="w-full justify-start">
+                <User className="w-4 h-4 mr-2" />
+                Account
+              </Button>
+            </Link>
             <Link to="/cart" onClick={() => setIsOpen(false)}>
               <Button variant="outline" size="sm" className="relative w-full">
                 <ShoppingCart className="w-4 h-4 mr-2" />
