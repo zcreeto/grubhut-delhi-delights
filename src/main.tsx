@@ -3,30 +3,42 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-// --- Vercel Speed Insights (client-only) ---
+// ---------------- VERCEL SPEED INSIGHTS ----------------
 if (typeof window !== "undefined") {
   import("@vercel/speed-insights")
     .then(({ injectSpeedInsights }) => {
       try {
         injectSpeedInsights();
       } catch (e) {
-        // graceful fallback if injection fails
-        console.debug("injectSpeedInsights() failed:", e);
+        console.debug("Speed Insights failed:", e);
       }
     })
     .catch((err) => {
-      // import failed (adblocker or network) — do nothing
-      console.debug("Failed to load @vercel/speed-insights:", err);
+      console.debug("Speed Insights import failed:", err);
     });
 }
-// -----------------------------------------------------
+// --------------------------------------------------------
 
-const rootElement = document.getElementById("root");
-if (!rootElement) {
-  throw new Error("Root element #root not found in index.html");
+// ---------------- VERCEL ANALYTICS ----------------------
+if (typeof window !== "undefined") {
+  import("@vercel/analytics")
+    .then(({ inject }) => {
+      try {
+        inject(); // initializes analytics
+      } catch (e) {
+        console.debug("Analytics failed:", e);
+      }
+    })
+    .catch((err) => {
+      console.debug("Analytics import failed:", err);
+    });
 }
+// --------------------------------------------------------
 
-createRoot(rootElement).render(
+const rootEl = document.getElementById("root");
+if (!rootEl) throw new Error("#root not found in index.html");
+
+createRoot(rootEl).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
