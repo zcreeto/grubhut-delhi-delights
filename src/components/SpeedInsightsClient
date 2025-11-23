@@ -1,0 +1,14 @@
+// components/SpeedInsightsClient.tsx
+"use client";
+
+import { useEffect } from "react";
+
+export default function SpeedInsightsClient() {
+  useEffect(() => {
+    import("@vercel/speed-insights")
+      .then(({ injectSpeedInsights }) => injectSpeedInsights())
+      .catch((e) => console.debug("SpeedInsights load failed", e));
+  }, []);
+
+  return null;
+}
