@@ -12,3 +12,10 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+
+User-agent: *
+Allow: /
+
+Sitemap: https://zaikagharanahh.vercel.app/sitemap.xml
+
