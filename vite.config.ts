@@ -2,9 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import { injectSpeedInsights } from '@vercel/speed-insights';
 
-injectSpeedInsights();
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
