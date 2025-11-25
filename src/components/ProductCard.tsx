@@ -34,6 +34,15 @@ import sundalImg from '@/assets/sundal.jpg';
 import tamarindRiceImg from '@/assets/tamarind-rice.jpg';
 import mysorePakImg from '@/assets/mysore-pak.jpg';
 import kozhukattaImg from '@/assets/kozhukatta.jpg';
+import thalasseryBiryaniImg from '@/assets/thalassery-biryani.jpg';
+import andhraBiryaniImg from '@/assets/andhra-biryani.jpg';
+import chettinadBiryaniImg from '@/assets/chettinad-biryani.jpg';
+import dindigulBiryaniImg from '@/assets/dindigul-biryani.jpg';
+import amburBiryaniImg from '@/assets/ambur-biryani.jpg';
+import mangaloreBiryaniImg from '@/assets/mangalore-biryani.jpg';
+import pakkiBiryaniImg from '@/assets/pakki-biryani.jpg';
+import bearyBiryaniImg from '@/assets/beary-biryani.jpg';
+import donneBiryaniImg from '@/assets/donne-biryani.jpg';
 
 const imageMap: Record<string, string> = {
   dosa: dosaImg,
@@ -64,6 +73,15 @@ const imageMap: Record<string, string> = {
   'tamarind-rice': tamarindRiceImg,
   'mysore-pak': mysorePakImg,
   kozhukatta: kozhukattaImg,
+  'thalassery-biryani': thalasseryBiryaniImg,
+  'andhra-biryani': andhraBiryaniImg,
+  'chettinad-biryani': chettinadBiryaniImg,
+  'dindigul-biryani': dindigulBiryaniImg,
+  'ambur-biryani': amburBiryaniImg,
+  'mangalore-biryani': mangaloreBiryaniImg,
+  'pakki-biryani': pakkiBiryaniImg,
+  'beary-biryani': bearyBiryaniImg,
+  'donne-biryani': donneBiryaniImg,
 };
 
 interface ProductCardProps {
