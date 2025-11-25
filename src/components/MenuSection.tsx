@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Product } from '@/types/product';
 import { ProductCard } from './ProductCard';
 import { Input } from '@/components/ui/input';
@@ -19,15 +19,6 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
   const [filterVeg, setFilterVeg] = useState(false);
   const [filterSpice, setFilterSpice] = useState<string | null>(null);
   const { ref, isVisible } = useScrollAnimation();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const categories = Array.from(new Set(products.map(p => p.category)));
   const spiceLevels = ['mild', 'medium', 'hot'];
@@ -43,8 +34,7 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
   return (
     <section 
       id={id} 
-      className="py-12 md:py-20 bg-gradient-spice parallax-section"
-      style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+      className="py-12 md:py-20 bg-gradient-spice"
     >
       <div className="container mx-auto px-4" ref={ref}>
         <div className={`transition-all duration-700 ${isVisible ? 'fade-in-scroll' : 'opacity-0'}`}>
