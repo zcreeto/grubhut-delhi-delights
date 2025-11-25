@@ -43,15 +43,15 @@ export const MenuSection = ({ title, products, id, showFilters = false }: MenuSe
   return (
     <section 
       id={id} 
-      className="py-20 bg-gradient-spice parallax-section"
+      className="py-12 md:py-20 bg-gradient-spice parallax-section"
       style={{ transform: `translateY(${scrollY * 0.05}px)` }}
     >
       <div className="container mx-auto px-4" ref={ref}>
         <div className={`transition-all duration-700 ${isVisible ? 'fade-in-scroll' : 'opacity-0'}`}>
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-3 md:mb-4">
           {title}
         </h2>
-        <div className="w-24 h-1 bg-gradient-warm mx-auto mb-12" />
+        <div className="w-24 h-1 bg-gradient-warm mx-auto mb-8 md:mb-12" />
 
         {showFilters && (
           <div className="mb-8 space-y-4 animate-fade-in">
