@@ -15,7 +15,7 @@ const Index = () => {
       <Hero />
       
       {/* About Section */}
-      <section id="about" className="py-20 bg-background">
+      <section id="about" className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">Bringing South India to Gurugram</h2>
@@ -72,7 +72,7 @@ const Index = () => {
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-warm text-white">
+      <section className="py-12 md:py-20 bg-gradient-warm text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6 animate-fade-in">
             Ready to Experience Authentic South Indian Flavors?
@@ -89,7 +89,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
+      <footer className="bg-foreground text-background py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl font-bold mb-4">Zaika Gharana</h3>
