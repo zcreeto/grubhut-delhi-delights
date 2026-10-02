@@ -95,6 +95,12 @@ export const Navbar = () => {
             >
               About
             </a>
+            <Link to="/chat" onClick={() => setIsOpen(false)}>
+              <Button variant="ghost" size="sm" className="w-full justify-start">
+                <ChefHat className="w-4 h-4 mr-2" />
+                Food Guide
+              </Button>
+            </Link>
             <Link to="/auth" onClick={() => setIsOpen(false)}>
               <Button variant="ghost" size="sm" className="w-full justify-start">
                 <User className="w-4 h-4 mr-2" />
