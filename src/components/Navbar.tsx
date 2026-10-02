@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Menu, X, User } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, ChefHat } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 import { cn } from '@/lib/utils';
@@ -31,6 +31,12 @@ export const Navbar = () => {
             <a href="#about" className="text-foreground hover:text-primary transition-colors">
               About
             </a>
+            <Link to="/chat">
+              <Button variant="ghost" size="sm">
+                <ChefHat className="w-4 h-4 mr-2" />
+                Food Guide
+              </Button>
+            </Link>
             <Link to="/auth">
               <Button variant="ghost" size="sm">
                 <User className="w-4 h-4 mr-2" />
